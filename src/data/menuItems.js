@@ -1,1 +1,1 @@
-module.exports = ["ebooks", "libros fisicos", "revistas"];
+module.exports = ["Everything","Ebooks", "Physical Books", "Magazines"];
