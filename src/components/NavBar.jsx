@@ -10,9 +10,10 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link as RouterLink } from "react-router-dom";
-import pages from "../data/pages";
+import menuItems from "../data/menuItems";
 import CartWidget from "./CartWidget";
+import AboutUsMenu from "./AboutUsMenu";
+import aboutUsPages from "../data/aboutUsPages";
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -33,8 +34,8 @@ function NavBar() {
           <Typography
             variant="h6"
             noWrap
-            component={RouterLink}
-            to="/"
+            component="a"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -45,7 +46,7 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            AnotherBookstore
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -77,9 +78,30 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {menuItems.map((menuItem) => (
+                <MenuItem key={menuItem} onClick={handleCloseNavMenu}>
+                  <Button
+                    key={menuItem}
+                    component="a"
+                    href={`/${menuItem}`}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 0.25, color: "white", display: "block" }}
+                  >
+                    {menuItem}
+                  </Button>
+                </MenuItem>
+              ))}
+              {aboutUsPages.map((menuItem) => (
+                <MenuItem key={menuItem} onClick={handleCloseNavMenu}>
+                  <Button
+                    key={menuItem}
+                    component="a"
+                    href={`/${menuItem}`}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 0.25, color: "white", display: "block" }}
+                  >
+                    {menuItem}
+                  </Button>
                 </MenuItem>
               ))}
             </Menu>
@@ -88,8 +110,8 @@ function NavBar() {
           <Typography
             variant="h5"
             noWrap
-            component={RouterLink}
-            to="/"
+            component="a"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -101,20 +123,21 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            ABookstore
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {menuItems.map((menuItem) => (
               <Button
-                key={page}
-                component={RouterLink}
-                to={page}
+                key={menuItem}
+                component="a"
+                href={`/${menuItem}`}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {menuItem}
               </Button>
             ))}
+            <AboutUsMenu></AboutUsMenu>
           </Box>
           <CartWidget cartValue={5} />
         </Toolbar>
