@@ -55,7 +55,7 @@ export default function AboutUsMenu() {
         component="a"
         sx={{ my: 2, color: "white", display: "block" }}
       >
-        nosotros
+        about us
       </Button>
       <Popper
         open={open}
